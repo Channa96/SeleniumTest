@@ -8,8 +8,6 @@ import org.testng.annotations.Test;
 
 import java.util.Set;
 
-import static java.lang.Thread.sleep;
-
 public class TestAddToCart {
 
     public static void main(String args[]) throws InterruptedException {
