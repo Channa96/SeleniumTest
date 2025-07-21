@@ -1,13 +1,12 @@
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
-
-
 import java.time.Duration;
 import java.util.Set;
 
@@ -19,8 +18,9 @@ public class TestAddToCart {
         driver.manage().window().maximize();
         driver.get("https://www.ebay.com/");
 
-        WebElement searchItem = driver.findElement(By.xpath("//input[@id='gh-ac']"));
-        searchItem.sendKeys("Iphone 16");
+        WebElement searchBar = driver.findElement(By.xpath("//input[@id='gh-ac']"));
+
+        driver.findElement(By.xpath("//input[@id='gh-ac']")).sendKeys("Iphone 16");
         driver.findElement(By.id("gh-search-btn")).click();
 
         String parentWindow = driver.getWindowHandle();
@@ -49,26 +49,18 @@ public class TestAddToCart {
         driver.close();
 
         driver.switchTo().window(parentWindow);
-        searchItem.sendKeys("Channa");
+
+        JavascriptExecutor js = (JavascriptExecutor) driver;
+        js.executeScript("window.scrollTo(0, 0)");
+        Thread.sleep(5000);
+
+        driver.findElement(By.xpath("//input[@id='gh-ac']")).clear();
+        driver.findElement(By.xpath("//input[@id='gh-ac']")).sendKeys("Channa");
+        //searchBar.clear();
+        //searchBar.sendKeys("Channa");
+        driver.findElement(By.id("gh-search-btn")).click();
         Thread.sleep(5000);
         driver.quit();
-
-//        Set<String> childWindowTwo = driver.getWindowHandles();
-//        Thread.sleep(3000);
-//        for (String i:childWindowTwo) {
-//            if(!i.equals(parentWindow)){
-//                driver.switchTo().window(i);
-//                WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-//
-//                WebElement SeeInCart = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("(//span[text()='See in cart'])[2]")));
-//
-//                SeeInCart.click();
-//                Thread.sleep(5000);
-//
-//                String actualPgHeader = driver.findElement(By.xpath("//h1[text()='Shopping cart']")).getText();
-//                Assert.assertEquals(actualPgHeader, "Shopping cart");
-//            }
-//        }
 
     }
 
