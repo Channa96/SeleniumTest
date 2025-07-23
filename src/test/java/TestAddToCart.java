@@ -18,20 +18,19 @@ public class TestAddToCart {
         driver.manage().window().maximize();
         driver.get("https://www.ebay.com/");
 
-        WebElement searchBar = driver.findElement(By.xpath("//input[@id='gh-ac']"));
-
         driver.findElement(By.xpath("//input[@id='gh-ac']")).sendKeys("Iphone 16");
         driver.findElement(By.id("gh-search-btn")).click();
 
-        String parentWindow = driver.getWindowHandle();
+        //Window handling section
+        String parentWindow = driver.getWindowHandle(); //Saving Parent window
         Thread.sleep(3000);
         driver.findElement(By.xpath("//span[text()='Apple iPhone 16 A3081 Spectrum Only 128GB Pink Very Good']")).click();
         Thread.sleep(3000);
-        Set<String> childWindow = driver.getWindowHandles();
+        Set<String> childWindow = driver.getWindowHandles(); //Accessing the child window
         Thread.sleep(3000);
         for (String test:childWindow) {
             if(!test.equals(parentWindow)){
-                driver.switchTo().window(test);
+                driver.switchTo().window(test); //Switch to child window
                 driver.findElement(By.id("atcBtn_btn_1")).click();
                 Thread.sleep(5000);
             }
@@ -46,18 +45,18 @@ public class TestAddToCart {
         String actualPgHeader = driver.findElement(By.xpath("//h1[text()='Shopping cart']")).getText();
         Assert.assertEquals(actualPgHeader, "Shopping cart");
         System.out.println("Text Validation Passed: "+actualPgHeader);
-        driver.close();
+        driver.close(); //Close the child window
 
-        driver.switchTo().window(parentWindow);
+        driver.switchTo().window(parentWindow); // Switch back to parent window
 
+        //Page scroll using javascript(Scroll to top)
         JavascriptExecutor js = (JavascriptExecutor) driver;
         js.executeScript("window.scrollTo(0, 0)");
         Thread.sleep(5000);
 
         driver.findElement(By.xpath("//input[@id='gh-ac']")).clear();
         driver.findElement(By.xpath("//input[@id='gh-ac']")).sendKeys("Channa");
-        //searchBar.clear();
-        //searchBar.sendKeys("Channa");
+
         driver.findElement(By.id("gh-search-btn")).click();
         Thread.sleep(5000);
         driver.quit();
