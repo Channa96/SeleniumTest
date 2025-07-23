@@ -7,26 +7,41 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
+import org.testng.annotations.*;
 import java.time.Duration;
 import java.util.Set;
 
 public class TestAddToCart {
+    WebDriver driver = new ChromeDriver();
 
-    public static void main(String args[]) throws InterruptedException {
+    @BeforeTest
+    public void initialSetup(){
         WebDriverManager.chromedriver().setup();
-        WebDriver driver = new ChromeDriver();
         driver.manage().window().maximize();
+    }
+
+    @Test
+    public void loadURL(){
         driver.get("https://www.ebay.com/");
+    }
 
-        WebElement searchBar = driver.findElement(By.xpath("//input[@id='gh-ac']"));
-
+    @Test
+    public void searchProduct(){
         driver.findElement(By.xpath("//input[@id='gh-ac']")).sendKeys("Iphone 16");
         driver.findElement(By.id("gh-search-btn")).click();
+    }
+
+    @Test
+    public void addToCart() throws InterruptedException {
 
         String parentWindow = driver.getWindowHandle();
         Thread.sleep(3000);
-        driver.findElement(By.xpath("//span[text()='Apple iPhone 16 A3081 Spectrum Only 128GB Pink Very Good']")).click();
+
+        //Passing xpath text value through a variable
+        String productName = "Apple iPhone 16 A3081 Spectrum Only 128GB Pink Very Good" ;
+        driver.findElement(By.xpath("//span[text()='"+ productName +"']")).click();
         Thread.sleep(3000);
+
         Set<String> childWindow = driver.getWindowHandles();
         Thread.sleep(3000);
         for (String test:childWindow) {
@@ -43,7 +58,8 @@ public class TestAddToCart {
         SeeInCart.click();
         Thread.sleep(5000);
 
-        String actualPgHeader = driver.findElement(By.xpath("//h1[text()='Shopping cart']")).getText();
+        String HeaderValue = "Shopping cart";
+        String actualPgHeader = driver.findElement(By.xpath("//h1[text()='"+HeaderValue+"']")).getText();
         Assert.assertEquals(actualPgHeader, "Shopping cart");
         System.out.println("Text Validation Passed: "+actualPgHeader);
         driver.close();
@@ -56,12 +72,15 @@ public class TestAddToCart {
 
         driver.findElement(By.xpath("//input[@id='gh-ac']")).clear();
         driver.findElement(By.xpath("//input[@id='gh-ac']")).sendKeys("Channa");
-        //searchBar.clear();
-        //searchBar.sendKeys("Channa");
+
         driver.findElement(By.id("gh-search-btn")).click();
         Thread.sleep(5000);
-        driver.quit();
 
+    }
+
+    @AfterTest
+    public void tearDown(){
+        driver.quit();
     }
 
 }

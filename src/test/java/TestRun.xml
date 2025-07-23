@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Test Suite One">
+    <test name="Test ebay">
+        <classes>
+            <class name="TestAddToCart">
+                <methods>
+                    <include name="loadURL"/>
+                    <include name="searchProduct"/>
+                    <include name="addToCart"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+</suite>
