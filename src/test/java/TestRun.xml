@@ -7,7 +7,9 @@
                 <methods>
                     <include name="loadURL"/>
                     <include name="searchProduct"/>
+                    <include name="selectItem"/>
                     <include name="addToCart"/>
+                    <include name="viewCart"/>
                 </methods>
             </class>
         </classes>

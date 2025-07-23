@@ -31,26 +31,34 @@ public class TestAddToCart {
         driver.findElement(By.id("gh-search-btn")).click();
     }
 
-    @Test
-    public void addToCart() throws InterruptedException {
+    String parentWindow = driver.getWindowHandle();
 
-        String parentWindow = driver.getWindowHandle();
+    @Test
+    public void selectItem() throws InterruptedException {
+
         Thread.sleep(3000);
 
         //Passing xpath text value through a variable
-        String productName = "Apple iPhone 16 A3081 Spectrum Only 128GB Pink Very Good" ;
-        driver.findElement(By.xpath("//span[text()='"+ productName +"']")).click();
+        String productName = "Apple iPhone 16 A3081 Spectrum Only 128GB Pink Very Good";
+        driver.findElement(By.xpath("//span[text()='" + productName + "']")).click();
         Thread.sleep(3000);
+    }
 
+    @Test
+    public void addToCart() throws InterruptedException {
         Set<String> childWindow = driver.getWindowHandles();
         Thread.sleep(3000);
-        for (String test:childWindow) {
-            if(!test.equals(parentWindow)){
+        for (String test : childWindow) {
+            if (!test.equals(parentWindow)) {
                 driver.switchTo().window(test);
                 driver.findElement(By.id("atcBtn_btn_1")).click();
                 Thread.sleep(5000);
             }
         }
+    }
+
+    @Test
+    public void viewCart()throws InterruptedException {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
 
         WebElement SeeInCart = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("(//span[text()='See in cart'])[2]")));
@@ -59,9 +67,10 @@ public class TestAddToCart {
         Thread.sleep(5000);
 
         String HeaderValue = "Shopping cart";
-        String actualPgHeader = driver.findElement(By.xpath("//h1[text()='"+HeaderValue+"']")).getText();
+        String actualPgHeader = driver.findElement(By.xpath("//h1[text()='" + HeaderValue + "']")).getText();
         Assert.assertEquals(actualPgHeader, "Shopping cart");
-        System.out.println("Text Validation Passed: "+actualPgHeader);
+        //Validation for verify the navigation to the cart
+        System.out.println("Text Validation Passed: " + actualPgHeader);
         driver.close();
 
         driver.switchTo().window(parentWindow);
