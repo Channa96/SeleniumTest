@@ -3,11 +3,9 @@ import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.testng.annotations.AfterTest;
-import org.testng.annotations.BeforeTest;
-import org.testng.annotations.Test;
+import org.testng.annotations.*;
 
-public class PopupHandleTest {
+public class HandleAlertTest {
     WebDriver driver = new ChromeDriver();
 
     @BeforeTest
@@ -43,13 +41,38 @@ public class PopupHandleTest {
     }
 
     @Test
+    public void NegativeConfirmantionAlert() throws InterruptedException {
+        driver.findElement(By.id("confirmBox")).click();
+        Alert ConfirmationA = driver.switchTo().alert();
+        System.out.println(ConfirmationA.getText());
+        Thread.sleep(2000);
+        ConfirmationA.dismiss();
+        Thread.sleep(2000);
+        System.out.println(driver.findElement(By.id("output")).getText());
+    }
+
+    @Test
     public void PromptAlert() throws InterruptedException {
         driver.findElement(By.id("promptBox")).click();
         Alert PromptA = driver.switchTo().alert();
         System.out.println(PromptA.getText());
         Thread.sleep(2000);
         PromptA.sendKeys("Channa");
+        Thread.sleep(2000);
         PromptA.accept();
+        Thread.sleep(2000);
+        System.out.println(driver.findElement(By.id("output")).getText());
+    }
+
+    @Test
+    public void NegativePromptAlert() throws InterruptedException {
+        driver.findElement(By.id("promptBox")).click();
+        Alert PromptA = driver.switchTo().alert();
+        System.out.println(PromptA.getText());
+        Thread.sleep(2000);
+        PromptA.sendKeys("Janitha");
+        Thread.sleep(2000);
+        PromptA.dismiss();
         Thread.sleep(2000);
         System.out.println(driver.findElement(By.id("output")).getText());
     }

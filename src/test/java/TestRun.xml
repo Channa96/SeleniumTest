@@ -2,24 +2,24 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite name="Test Suite One">
     <test name="Test ebay">
-<!--        <classes>-->
-<!--            <class name="TestAddToCart">-->
-<!--                <methods>-->
-<!--                    <include name="loadURL"/>-->
-<!--                    <include name="searchProduct"/>-->
-<!--                    <include name="selectItem"/>-->
-<!--                    <include name="addToCart"/>-->
-<!--                    <include name="viewCart"/>-->
-<!--                </methods>-->
-<!--            </class>-->
-<!--        </classes>-->
         <classes>
-            <class name="PopupHandleTest">
+            <class name="TestAddToCart">
+                <methods>
+                    <include name="loadURL"/>
+                    <include name="searchProduct"/>
+                    <include name="selectItem"/>
+                    <include name="addToCart"/>
+                    <include name="viewCart"/>
+                </methods>
+            </class>
+            <class name="HandleAlertTest">
                 <methods>
                     <include name="loadURL"/>
                     <include name="SimpleAlert"/>
                     <include name="ConfirmantionAlert"/>
+                    <include name="NegativeConfirmantionAlert"/>
                     <include name="PromptAlert"/>
+                    <include name="NegativePromptAlert"/>
                 </methods>
             </class>
         </classes>
