@@ -40,6 +40,23 @@ public class TestAddToCart {
         driver.findElement(By.id("gh-search-btn")).click();
     }
 
+    @Test
+    public void extractData() throws IOException {
+        File excelFile = new File("src/test/resources/TestFile.xlsx");
+        FileInputStream channa = new FileInputStream(excelFile);
+        Workbook testWorkBook = new XSSFWorkbook(channa);
+        Sheet sheet = testWorkBook.getSheet("Sheet1");
+
+        int rowCount = sheet.getPhysicalNumberOfRows();
+        int columnCount = sheet.getRow(0).getLastCellNum();
+
+        searchProduct = sheet.getRow(1).getCell(0).getStringCellValue();
+        productName = sheet.getRow(1).getCell(2).getStringCellValue();
+
+        testWorkBook.close();
+        channa.close();
+    }
+
     String parentWindow = driver.getWindowHandle();
 
     @Test
@@ -64,23 +81,6 @@ public class TestAddToCart {
                 Thread.sleep(5000);
             }
         }
-    }
-
-    @Test
-    public void extractData() throws IOException {
-        File excelFile = new File("src/test/resources/TestFile.xlsx");
-        FileInputStream channa = new FileInputStream(excelFile);
-        Workbook testWorkBook = new XSSFWorkbook(channa);
-        Sheet sheet = testWorkBook.getSheet("Sheet1");
-
-        int rowCount = sheet.getPhysicalNumberOfRows();
-        int columnCount = sheet.getRow(0).getLastCellNum();
-
-        searchProduct = sheet.getRow(1).getCell(0).getStringCellValue();
-        productName = sheet.getRow(1).getCell(2).getStringCellValue();
-
-        testWorkBook.close();
-        channa.close();
     }
 
     @Test
