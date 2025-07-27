@@ -6,6 +6,7 @@
             <class name="TestAddToCart">
                 <methods>
                     <include name="loadURL"/>
+                    <include name="extractData"/>
                     <include name="searchProduct"/>
                     <include name="selectItem"/>
                     <include name="addToCart"/>
