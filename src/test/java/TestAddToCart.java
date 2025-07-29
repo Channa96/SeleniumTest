@@ -11,7 +11,6 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.annotations.*;
-
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -46,9 +45,6 @@ public class TestAddToCart {
         FileInputStream channa = new FileInputStream(excelFile);
         Workbook testWorkBook = new XSSFWorkbook(channa);
         Sheet sheet = testWorkBook.getSheet("Sheet1");
-
-        int rowCount = sheet.getPhysicalNumberOfRows();
-        int columnCount = sheet.getRow(0).getLastCellNum();
 
         searchProduct = sheet.getRow(1).getCell(0).getStringCellValue();
         productName = sheet.getRow(1).getCell(2).getStringCellValue();

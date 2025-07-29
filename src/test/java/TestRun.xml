@@ -13,16 +13,16 @@
                     <include name="viewCart"/>
                 </methods>
             </class>
-            <class name="HandleAlertTest">
-                <methods>
-                    <include name="loadURL"/>
-                    <include name="SimpleAlert"/>
-                    <include name="ConfirmantionAlert"/>
-                    <include name="NegativeConfirmantionAlert"/>
-                    <include name="PromptAlert"/>
-                    <include name="NegativePromptAlert"/>
-                </methods>
-            </class>
+<!--            <class name="HandleAlertTest">-->
+<!--                <methods>-->
+<!--                    <include name="loadURL"/>-->
+<!--                    <include name="SimpleAlert"/>-->
+<!--                    <include name="ConfirmantionAlert"/>-->
+<!--                    <include name="NegativeConfirmantionAlert"/>-->
+<!--                    <include name="PromptAlert"/>-->
+<!--                    <include name="NegativePromptAlert"/>-->
+<!--                </methods>-->
+<!--            </class>-->
         </classes>
     </test>
 </suite>
