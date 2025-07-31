@@ -3,16 +3,16 @@
 <suite name="Test Suite One">
     <test name="Test ebay">
         <classes>
-            <class name="TestAddToCart">
-                <methods>
-                    <include name="loadURL"/>
-                    <include name="extractData"/>
-                    <include name="searchProduct"/>
-                    <include name="selectItem"/>
-                    <include name="addToCart"/>
-                    <include name="viewCart"/>
-                </methods>
-            </class>
+<!--            <class name="TestAddToCart">-->
+<!--                <methods>-->
+<!--                    <include name="loadURL"/>-->
+<!--                    <include name="extractData"/>-->
+<!--                    <include name="searchProduct"/>-->
+<!--                    <include name="selectItem"/>-->
+<!--                    <include name="addToCart"/>-->
+<!--                    <include name="viewCart"/>-->
+<!--                </methods>-->
+<!--            </class>-->
 <!--            <class name="HandleAlertTest">-->
 <!--                <methods>-->
 <!--                    <include name="loadURL"/>-->
@@ -23,6 +23,18 @@
 <!--                    <include name="NegativePromptAlert"/>-->
 <!--                </methods>-->
 <!--            </class>-->
+<!--            <class name="PopupTest">-->
+<!--                <methods>-->
+<!--                    <include name="permissionPopupTest"/>-->
+<!--                </methods>-->
+<!--            </class>-->
+            <class name="HandleFramesTest">
+                <methods>
+                    <include name="loadURL"/>
+                    <include name="SimpleFrame"/>
+                    <include name="NestedFrames"/>
+                </methods>
+            </class>
         </classes>
     </test>
 </suite>
