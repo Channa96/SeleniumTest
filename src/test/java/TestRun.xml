@@ -23,16 +23,24 @@
 <!--                    <include name="NegativePromptAlert"/>-->
 <!--                </methods>-->
 <!--            </class>-->
-<!--            <class name="PopupTest">-->
+<!--            <class name="HandlePopupTest">-->
 <!--                <methods>-->
 <!--                    <include name="permissionPopupTest"/>-->
 <!--                </methods>-->
 <!--            </class>-->
-            <class name="HandleFramesTest">
+<!--            <class name="HandleFramesTest">-->
+<!--                <methods>-->
+<!--                    <include name="loadURL"/>-->
+<!--                    <include name="SimpleFrame"/>-->
+<!--                    <include name="NestedFrames"/>-->
+<!--                </methods>-->
+<!--            </class>-->
+            <class name="HandleScreenShotsTest">
                 <methods>
-                    <include name="loadURL"/>
-                    <include name="SimpleFrame"/>
-                    <include name="NestedFrames"/>
+<!--                    <include name="loadURL"/>-->
+                    <include name="screenShotImg"/>
+                    <include name="screenShotString"/>
+                    <include name="screenShotByt"/>
                 </methods>
             </class>
         </classes>

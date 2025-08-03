@@ -14,7 +14,7 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 
-public class ExternalDataProviderTest {
+public class HandleExternalDataProviderTest {
         WebDriver driver = new ChromeDriver();
 
         @BeforeTest
