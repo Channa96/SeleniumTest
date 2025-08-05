@@ -35,12 +35,17 @@
 <!--                    <include name="NestedFrames"/>-->
 <!--                </methods>-->
 <!--            </class>-->
-            <class name="HandleScreenShotsTest">
+<!--            <class name="HandleScreenShotsTest">-->
+<!--                <methods>-->
+<!--&lt;!&ndash;                    <include name="loadURL"/>&ndash;&gt;-->
+<!--                    <include name="screenShotImg"/>-->
+<!--                    <include name="screenShotString"/>-->
+<!--                    <include name="screenShotByt"/>-->
+<!--                </methods>-->
+<!--            </class>-->
+            <class name="FileDownloadTest">
                 <methods>
-<!--                    <include name="loadURL"/>-->
-                    <include name="screenShotImg"/>
-                    <include name="screenShotString"/>
-                    <include name="screenShotByt"/>
+                    <include name="DowloadPDFFile"/>
                 </methods>
             </class>
         </classes>
