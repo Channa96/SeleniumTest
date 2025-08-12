@@ -43,9 +43,15 @@
 <!--                    <include name="screenShotByt"/>-->
 <!--                </methods>-->
 <!--            </class>-->
-            <class name="FileDownloadTest">
+<!--            <class name="FileDownloadTest">-->
+<!--                <methods>-->
+<!--                    <include name="DowloadPDFFile"/>-->
+<!--                </methods>-->
+<!--            </class>-->
+            <class name="HandleCalenders">
                 <methods>
-                    <include name="DowloadPDFFile"/>
+                    <include name="loadURL"/>
+                    <include name="callDates"/>
                 </methods>
             </class>
         </classes>
